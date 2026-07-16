@@ -1,0 +1,457 @@
+/* ==========================================================================
+   Giftbox.id_pku — Company Profile
+   Design tokens
+   ========================================================================== */
+:root{
+  --cream:      #F3E6CF;   /* kraft paper background */
+  --cream-2:    #FBF5E8;   /* lighter card surface */
+  --charcoal:   #221E1B;   /* near-black, from IG dark theme */
+  --charcoal-2: #322C27;
+  --rose:       #B23A48;   /* valentine rose-red accent */
+  --rose-dark:  #8C2836;
+  --gold:       #B4893C;   /* metallic gold, tag string */
+  --gold-light: #E4C97C;
+  --blush:      #F4DDE0;   /* soft alternate section bg */
+  --ink:        #241F1C;
+  --ink-soft:   #5C534B;
+  --line:       rgba(34,30,27,0.14);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Plus Jakarta Sans", -apple-system, Segoe UI, sans-serif;
+  --font-tag: "Space Mono", monospace;
+
+  --radius: 6px;
+  --shadow-tag: 0 10px 24px rgba(34,30,27,0.14);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4,.font-display{
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+}
+a{ text-decoration:none; }
+img{ max-width:100%; display:block; }
+.container-narrow{ max-width: 1120px; margin:0 auto; padding:0 20px; }
+
+/* Eyebrow / small caps label ---------------------------------------------*/
+.eyebrow{
+  font-family: var(--font-tag);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rose);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.eyebrow::before{
+  content:"";
+  width:18px; height:1px;
+  background: var(--rose);
+  display:inline-block;
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+.gb-navbar{
+  background: var(--charcoal);
+  padding: 14px 0;
+  border-bottom: 3px solid var(--gold);
+}
+.gb-navbar .navbar-brand{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  color: var(--cream-2) !important;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.gb-navbar .brand-mark{
+  width:38px;height:38px;border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold) 70%);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.gb-navbar .navbar-nav .nav-link{
+  color: rgba(251,245,232,0.78) !important;
+  font-weight:600;
+  font-size:0.92rem;
+  padding: 8px 16px !important;
+  letter-spacing:0.01em;
+}
+.gb-navbar .navbar-nav .nav-link:hover,
+.gb-navbar .navbar-nav .nav-link.active{
+  color: var(--gold-light) !important;
+}
+.gb-navbar .nav-cta{
+  background: var(--rose);
+  color: #fff !important;
+  border-radius: 999px;
+  padding: 8px 20px !important;
+  margin-left: 6px;
+}
+.gb-navbar .nav-cta:hover{ background: var(--rose-dark); color:#fff !important; }
+.gb-navbar .navbar-toggler{ border-color: rgba(251,245,232,0.4); }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn-gb-primary{
+  background: var(--rose);
+  color:#fff;
+  border:none;
+  border-radius: 999px;
+  padding: 13px 30px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform .15s ease, background .15s ease;
+  display:inline-flex; align-items:center; gap:10px;
+}
+.btn-gb-primary:hover{ background: var(--rose-dark); color:#fff; transform: translateY(-2px); }
+.btn-gb-outline{
+  background: transparent;
+  color: var(--charcoal);
+  border: 1.5px solid var(--charcoal);
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-weight:700;
+  font-size:0.95rem;
+  transition: all .15s ease;
+  display:inline-flex; align-items:center; gap:10px;
+}
+.btn-gb-outline:hover{ background: var(--charcoal); color: var(--cream); }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero{
+  background: linear-gradient(180deg, var(--cream) 0%, var(--blush) 100%);
+  padding: 70px 0 90px;
+  position:relative;
+  overflow:hidden;
+}
+.hero h1{
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 1.06;
+}
+.hero h1 em{
+  font-style: normal;
+  color: var(--rose);
+}
+.hero p.lead-text{
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+  max-width: 480px;
+  margin-top: 18px;
+}
+.price-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background: var(--charcoal);
+  color: var(--gold-light);
+  font-family: var(--font-tag);
+  font-size: 0.85rem;
+  padding: 9px 18px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+}
+.price-badge .dot{ width:7px;height:7px;border-radius:50%;background:var(--rose); }
+
+/* Hero visual: stack of gift-tag illustration cards */
+.hero-art{ position:relative; height: 420px; }
+.hero-art svg{ width:100%; height:100%; }
+
+/* Torn-edge divider (scissor-cut ribbon) ---------------------------------*/
+.torn-divider{
+  display:block;
+  width:100%;
+  height:34px;
+  margin-top:-2px;
+}
+.torn-divider path{ fill: var(--cream-2); }
+.section-blush + .torn-divider path{ fill: var(--blush); }
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+section{ padding: 78px 0; }
+.section-blush{ background: var(--blush); }
+.section-cream2{ background: var(--cream-2); }
+.section-dark{ background: var(--charcoal); color: var(--cream-2); }
+.section-dark h2, .section-dark h3{ color: var(--cream-2); }
+.section-head{ max-width: 620px; margin-bottom: 46px; }
+.section-head h2{ font-size: clamp(1.7rem, 3vw, 2.3rem); margin-top:10px; }
+
+/* ==========================================================================
+   Gift-tag product card — signature element
+   ========================================================================== */
+.tag-card{
+  position:relative;
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 26px 22px 22px;
+  height:100%;
+  box-shadow: var(--shadow-tag);
+  transition: transform .18s ease, box-shadow .18s ease;
+  clip-path: polygon(22px 0, 100% 0, 100% 100%, 0 100%, 0 22px);
+}
+.tag-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 34px rgba(34,30,27,0.2); }
+.tag-hole{
+  position:absolute;
+  top:12px; left:12px;
+  width:12px; height:12px;
+  border-radius:50%;
+  background: var(--cream);
+  border: 1.5px solid var(--gold);
+}
+.tag-icon{
+  width:100%;
+  height:130px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: var(--blush);
+  border-radius: 3px;
+  margin-bottom:16px;
+}
+.tag-icon svg{ width:78px; height:78px; }
+.tag-card h4{ font-size:1.12rem; margin-bottom:6px; }
+.tag-card p{ color: var(--ink-soft); font-size:0.9rem; margin-bottom:14px; }
+.tag-price{
+  font-family: var(--font-tag);
+  font-size: 0.95rem;
+  color: var(--rose-dark);
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.tag-price .btn-tag{
+  background:none; border:none;
+  color: var(--charcoal);
+  font-family: var(--font-tag);
+  font-size:0.78rem;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  padding:0;
+}
+
+/* category pill filter */
+.cat-pills{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:38px; }
+.cat-pill{
+  font-family: var(--font-tag);
+  font-size:0.78rem;
+  letter-spacing:0.03em;
+  text-transform:uppercase;
+  padding: 9px 18px;
+  border-radius:999px;
+  border: 1.5px solid var(--charcoal);
+  background:transparent;
+  color: var(--charcoal);
+  cursor:pointer;
+  transition: all .15s ease;
+}
+.cat-pill.active, .cat-pill:hover{ background: var(--charcoal); color: var(--cream); }
+
+/* ==========================================================================
+   About page bits
+   ========================================================================== */
+.stat-box{
+  border-left: 3px solid var(--rose);
+  padding-left: 16px;
+}
+.stat-box .num{
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  color: var(--charcoal);
+  line-height:1;
+}
+.stat-box .label{
+  font-family: var(--font-tag);
+  font-size:0.72rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color: var(--ink-soft);
+}
+.value-row{
+  display:flex; gap:16px; align-items:flex-start;
+  padding:20px 0; border-bottom:1px solid var(--line);
+}
+.value-row:last-child{ border-bottom:none; }
+.value-num{
+  font-family: var(--font-tag);
+  color: var(--gold);
+  font-size:0.85rem;
+  padding-top:4px;
+}
+
+/* Testimoni card */
+.testi-card{
+  background: var(--cream-2);
+  border-radius: var(--radius);
+  padding: 26px;
+  border: 1px solid var(--line);
+  height:100%;
+}
+.testi-card .quote-mark{
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  color: var(--rose);
+  line-height:0.6;
+  display:block;
+  margin-bottom:10px;
+}
+.testi-name{ font-weight:700; font-size:0.9rem; margin-top:14px; }
+.testi-role{ font-family: var(--font-tag); font-size:0.72rem; color: var(--ink-soft); text-transform:uppercase; }
+
+/* ==========================================================================
+   Contact page
+   ========================================================================== */
+.contact-panel{
+  background: var(--charcoal);
+  color: var(--cream-2);
+  border-radius: var(--radius);
+  padding: 40px;
+}
+.contact-panel .eyebrow{ color: var(--gold-light); }
+.contact-panel .eyebrow::before{ background: var(--gold-light); }
+.contact-item{ display:flex; gap:14px; margin-bottom:22px; align-items:flex-start; }
+.contact-item .ic{
+  width:40px;height:40px;border-radius:50%;
+  background: rgba(228,201,124,0.14);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.contact-item .ic svg{ width:18px;height:18px; }
+.contact-item h5{ color: var(--cream-2); font-size:0.95rem; margin-bottom:2px; }
+.contact-item p{ color: rgba(251,245,232,0.65); font-size:0.88rem; margin:0; }
+
+.form-gb .form-label{
+  font-family: var(--font-tag);
+  font-size:0.72rem;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color: var(--ink-soft);
+}
+.form-gb .form-control{
+  background: var(--cream-2);
+  border: 1.5px solid var(--line);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size:0.94rem;
+}
+.form-gb .form-control:focus{
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(178,58,72,0.15);
+}
+.form-gb .invalid-feedback{ font-size:0.78rem; }
+.form-gb .form-control.is-invalid{ border-color:#c0392b; }
+.map-frame{
+  border-radius: var(--radius);
+  overflow:hidden;
+  border: 1px solid var(--line);
+  height: 320px;
+}
+.map-frame iframe{ width:100%; height:100%; border:0; }
+
+.alert-gb-success{
+  background: rgba(178,58,72,0.08);
+  border: 1px solid var(--rose);
+  color: var(--rose-dark);
+  border-radius:4px;
+  padding:14px 18px;
+  font-size:0.9rem;
+  display:none;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.gb-footer{
+  background: var(--charcoal);
+  color: rgba(251,245,232,0.65);
+  padding: 54px 0 26px;
+}
+.gb-footer h5{ color: var(--cream-2); font-family: var(--font-display); font-size:1.2rem; }
+.gb-footer a{ color: rgba(251,245,232,0.65); }
+.gb-footer a:hover{ color: var(--gold-light); }
+.footer-bottom{
+  border-top:1px solid rgba(251,245,232,0.14);
+  margin-top:36px;
+  padding-top:20px;
+  font-size:0.82rem;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.social-dot{
+  width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(251,245,232,0.3);
+  display:flex;align-items:center;justify-content:center;
+  transition: all .15s ease;
+}
+.social-dot:hover{ background: var(--gold); border-color: var(--gold); }
+.social-dot svg{ width:16px;height:16px; }
+
+/* ==========================================================================
+   Misc / utility
+   ========================================================================== */
+.badge-po{
+  font-family: var(--font-tag);
+  font-size:0.68rem;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(178,58,72,0.12);
+  color: var(--rose-dark);
+}
+.page-header{
+  background: var(--charcoal);
+  color: var(--cream-2);
+  padding: 64px 0 46px;
+}
+.page-header .eyebrow{ color: var(--gold-light); }
+.page-header .eyebrow::before{ background: var(--gold-light); }
+.page-header h1{ color: var(--cream-2); font-size: clamp(2rem,4vw,2.8rem); }
+.page-header p{ color: rgba(251,245,232,0.7); max-width:560px; }
+
+.accordion-gb .accordion-button{
+  font-family: var(--font-display);
+  font-weight:600;
+  background: var(--cream-2);
+  color: var(--charcoal);
+}
+.accordion-gb .accordion-button:not(.collapsed){
+  color: var(--rose-dark);
+  background: var(--blush);
+  box-shadow:none;
+}
+.accordion-gb .accordion-item{ border-color: var(--line); }
+
+/* modal tweaks */
+.modal-content{ border-radius:6px; border:none; }
+.modal-header{ background: var(--charcoal); color: var(--cream-2); border:none; }
+.modal-header .btn-close{ filter: invert(1); }
+
+@media (max-width: 767px){
+  .hero{ padding: 46px 0 60px; text-align:center; }
+  .hero-art{ height:280px; margin-top:36px; }
+  section{ padding:56px 0; }
+  .contact-panel{ padding:28px; }
+}
